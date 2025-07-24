@@ -45,46 +45,47 @@ const Blog = () => {
           {blogPosts.map((post, index) => (
             <article
               key={index}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-border group"
+              className="bg-card rounded-xl overflow-hidden shadow-card hover:shadow-floating transition-all duration-300 border border-border/50 group hover:border-accent/20"
             >
               {/* Image Placeholder */}
-              <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center text-6xl">
-                {post.image}
+              <div className="h-52 bg-gradient-to-br from-accent/5 via-accent/10 to-accent/5 flex items-center justify-center text-7xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
+                <span className="relative z-10">{post.image}</span>
               </div>
 
               {/* Content */}
               <div className="p-6">
-                {/* Category & Date */}
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-3">
-                  <span className="bg-accent/10 text-accent px-2 py-1 rounded text-xs font-medium">
+                {/* Category & Meta */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="bg-accent text-accent-foreground px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
                     {post.category}
                   </span>
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-3 text-xs text-muted-foreground">
                     <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-1" />
+                      <Calendar className="w-3.5 h-3.5 mr-1.5" />
                       {post.date}
                     </div>
                     <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
+                      <Clock className="w-3.5 h-3.5 mr-1.5" />
                       {post.readTime}
                     </div>
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-primary mb-3 group-hover:text-accent transition-colors">
+                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300 line-clamp-2">
                   {post.title}
                 </h3>
 
                 {/* Excerpt */}
-                <p className="text-muted-foreground mb-4 leading-relaxed">
+                <p className="text-muted-foreground mb-6 leading-relaxed text-sm line-clamp-3">
                   {post.excerpt}
                 </p>
 
                 {/* Read More Link */}
-                <button className="flex items-center text-accent hover:text-accent-light font-medium transition-colors">
-                  Read More
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <button className="inline-flex items-center text-accent hover:text-accent-light font-semibold text-sm transition-all duration-300 group/btn">
+                  Read Article
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
                 </button>
               </div>
             </article>
@@ -96,7 +97,7 @@ const Blog = () => {
           <Button 
             size="lg" 
             variant="outline"
-            className="border-primary text-primary hover:bg-primary hover:text-white"
+            className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
           >
             View All Articles
             <ArrowRight className="w-4 h-4 ml-2" />
