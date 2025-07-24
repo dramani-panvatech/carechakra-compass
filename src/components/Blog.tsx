@@ -45,48 +45,55 @@ const Blog = () => {
           {blogPosts.map((post, index) => (
             <article
               key={index}
-              className="bg-card rounded-xl overflow-hidden shadow-card hover:shadow-floating transition-all duration-300 border border-border/50 group hover:border-accent/20"
+              className="bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-floating transition-all duration-500 border border-border/30 group hover:-translate-y-2"
             >
-              {/* Image Placeholder */}
-              <div className="h-52 bg-gradient-to-br from-accent/5 via-accent/10 to-accent/5 flex items-center justify-center text-7xl relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
-                <span className="relative z-10">{post.image}</span>
+              {/* Modern Header */}
+              <div className="h-20 bg-gradient-to-r from-accent/10 via-accent/5 to-primary/10 relative">
+                <div className="absolute top-4 left-6">
+                  <span className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm">
+                    {post.category}
+                  </span>
+                </div>
+                <div className="absolute top-4 right-6 text-accent text-3xl opacity-20">
+                  {post.image}
+                </div>
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                {/* Category & Meta */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="bg-accent text-accent-foreground px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
-                    {post.category}
-                  </span>
-                  <div className="flex items-center space-x-3 text-xs text-muted-foreground">
-                    <div className="flex items-center">
-                      <Calendar className="w-3.5 h-3.5 mr-1.5" />
-                      {post.date}
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="w-3.5 h-3.5 mr-1.5" />
-                      {post.readTime}
-                    </div>
+              <div className="p-8">
+                {/* Meta Information */}
+                <div className="flex items-center space-x-4 text-xs text-muted-foreground mb-4">
+                  <div className="flex items-center">
+                    <Calendar className="w-4 h-4 mr-2 text-accent" />
+                    <span className="font-medium">{post.date}</span>
+                  </div>
+                  <div className="w-1 h-1 rounded-full bg-muted-foreground"></div>
+                  <div className="flex items-center">
+                    <Clock className="w-4 h-4 mr-2 text-accent" />
+                    <span className="font-medium">{post.readTime}</span>
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors duration-300 line-clamp-2">
+                <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-accent transition-colors duration-300 leading-tight">
                   {post.title}
                 </h3>
 
                 {/* Excerpt */}
-                <p className="text-muted-foreground mb-6 leading-relaxed text-sm line-clamp-3">
+                <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
                   {post.excerpt}
                 </p>
 
                 {/* Read More Link */}
-                <button className="inline-flex items-center text-accent hover:text-accent-light font-semibold text-sm transition-all duration-300 group/btn">
-                  Read Article
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                </button>
+                <div className="flex items-center justify-between">
+                  <button className="inline-flex items-center text-accent hover:text-accent-light font-semibold text-sm transition-all duration-300 group/btn">
+                    Read Full Article
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                  </button>
+                  <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                    <ArrowRight className="w-4 h-4 text-accent" />
+                  </div>
+                </div>
               </div>
             </article>
           ))}
